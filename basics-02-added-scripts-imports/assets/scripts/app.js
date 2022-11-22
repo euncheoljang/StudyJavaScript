@@ -35,38 +35,51 @@ function calculateResult(calculationType) {
   if (calculationType === "ADD") {
     currentResult = currentResult + enteredNumber;
     mathOperator = "+";
-  } else {
+  } else if (calculationType === "SUBSTRACT") {
     currentResult -= enteredNumber;
     mathOperator = "-";
+  } else if (calculationType === "MULTIPLY") {
+    currentResult *= enteredNumber;
+    mathOperator = "*";
+  } else if (calculationType === "DIVIDE") {
+    currentResult /= enteredNumber;
+    mathOperator = "/";
   }
-  
-  createAndWriteOutpu("+", initialResult, enteredNumber);
+
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBSTRACT" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE"
+  ) {
+    return;
+  }
+
+  // if (
+  //   calculationType === "ADD" ||
+  //   calculationType === "SUBTRACT" ||
+  //   calculationType === "MULTIPLY" ||
+  //   calculationType === "di"
+  // )
+
+  createAndWriteOutpu(mathOperator, initialResult, enteredNumber);
   writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
 function add() {
   calculateResult("ADD");
-
 }
 
 function substract() {
-  calculateResult("SUBSTRACT")
+  calculateResult("SUBSTRACT");
 }
 
 function multiplty() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult * enteredNumber;
-  createAndWriteOutpu("*", initialResult, enteredNumber);
-  writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult);
+  calculateResult("MULTIPLY");
 }
 
 function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult / enteredNumber;
-  createAndWriteOutpu("/", initialResult, enteredNumber);
-  writeToLog("DIVIDE", initialResult, enteredNumber, currentResult);
+  calculateResult("DIVIDE");
 }
 
 addBtn.addEventListener("click", add);
