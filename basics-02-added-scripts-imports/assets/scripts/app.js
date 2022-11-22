@@ -32,7 +32,8 @@ function add() {
   const initialResult = currentResult;
   currentResult = currentResult + enteredNumber;
   createAndWriteOutpu("+", initialResult, enteredNumber);
-  writeToLog("ADD", initialResult, enteredNumber, currentResult)
+  writeToLog("ADD", initialResult, enteredNumber, currentResult);
+  
 }
 
 function substract() {
@@ -40,7 +41,7 @@ function substract() {
   const initialResult = currentResult;
   currentResult = currentResult - enteredNumber;
   createAndWriteOutpu("-", initialResult, enteredNumber);
-  writeToLog("SUBSTRACT", initialResult, enteredNumber, currentResult)
+  writeToLog("SUBSTRACT", initialResult, enteredNumber, currentResult);
 }
 
 function multiplty() {
@@ -48,7 +49,7 @@ function multiplty() {
   const initialResult = currentResult;
   currentResult = currentResult * enteredNumber;
   createAndWriteOutpu("*", initialResult, enteredNumber);
-  writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult)
+  writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult);
 }
 
 function divide() {
@@ -56,7 +57,7 @@ function divide() {
   const initialResult = currentResult;
   currentResult = currentResult / enteredNumber;
   createAndWriteOutpu("/", initialResult, enteredNumber);
-  writeToLog("DIVIDE", initialResult, enteredNumber, currentResult)
+  writeToLog("DIVIDE", initialResult, enteredNumber, currentResult);
 }
 
 addBtn.addEventListener("click", add);
