@@ -27,21 +27,30 @@ function writeToLog(
   console.log(logEntries);
 }
 
-function add() {
+function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult = currentResult + enteredNumber;
-  createAndWriteOutpu("+", initialResult, enteredNumber);
-  writeToLog("ADD", initialResult, enteredNumber, currentResult);
+  let mathOperator;
+
+  if (calculationType === "ADD") {
+    currentResult = currentResult + enteredNumber;
+    mathOperator = "+";
+  } else {
+    currentResult -= enteredNumber;
+    mathOperator = "-";
+  }
   
+  createAndWriteOutpu("+", initialResult, enteredNumber);
+  writeToLog(calculationType, initialResult, enteredNumber, currentResult);
+}
+
+function add() {
+  calculateResult("ADD");
+
 }
 
 function substract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult - enteredNumber;
-  createAndWriteOutpu("-", initialResult, enteredNumber);
-  writeToLog("SUBSTRACT", initialResult, enteredNumber, currentResult);
+  calculateResult("SUBSTRACT")
 }
 
 function multiplty() {
