@@ -29,9 +29,26 @@ function writeToLog(
 
 function calculateResult(calculationType) {
   const enteredNumber = getUserNumberInput();
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBSTRACT" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE" ||
+    // enteredNumber === 0
+    !enteredNumber
+  ) {
+    return;
+  }
+  
+  // if (
+  //   calculationType === "ADD" ||
+  //   calculationType === "SUBTRACT" ||
+  //   calculationType === "MULTIPLY" ||
+  //   calculationType === "di"
+  // )
+
   const initialResult = currentResult;
   let mathOperator;
-
   if (calculationType === "ADD") {
     currentResult = currentResult + enteredNumber;
     mathOperator = "+";
@@ -45,22 +62,8 @@ function calculateResult(calculationType) {
     currentResult /= enteredNumber;
     mathOperator = "/";
   }
+  
 
-  if (
-    calculationType !== "ADD" &&
-    calculationType !== "SUBSTRACT" &&
-    calculationType !== "MULTIPLY" &&
-    calculationType !== "DIVIDE"
-  ) {
-    return;
-  }
-
-  // if (
-  //   calculationType === "ADD" ||
-  //   calculationType === "SUBTRACT" ||
-  //   calculationType === "MULTIPLY" ||
-  //   calculationType === "di"
-  // )
 
   createAndWriteOutpu(mathOperator, initialResult, enteredNumber);
   writeToLog(calculationType, initialResult, enteredNumber, currentResult);
