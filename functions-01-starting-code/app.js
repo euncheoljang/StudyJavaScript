@@ -101,30 +101,52 @@ startGameBtn.addEventListener("click", function () {
 
 //not realated to game
 
-const sumUp = (resultHandler, ...numbers) => {
+// const sumUp = (resultHandler, ...numbers) => {
+//   const validateNumber = (number) => {
+//     return isNaN(number) ? 0 : number;
+//   };
+  
+//   let sum = 0;
+//   for (const num of numbers) {
+//     sum += validateNumber(num);
+//   }
+//   resultHandler(sum);
+// };
+const combine = (resultHandler, operation, ...numbers) => {
   const validateNumber = (number) => {
     return isNaN(number) ? 0 : number;
   };
   
   let sum = 0;
   for (const num of numbers) {
-    sum += validateNumber(num);
+    if (operation === "ADD") {
+      sum += validateNumber(num);
+    } else {
+      sum -= validateNumber(num);
+    }
   }
-  resultHandler(sum);
+  resultHandler(sum,);
 };
 
-const subtractUp = function() {
-  let sum = 0;
-  for (const num of arguments) { // don't use that
-    sum += num;
-  }
-  return sum;
-}
+// const subtractUp = function(resultHandler) {
+//   let sum = 0;
+//   for (const num of arguments) { // don't use that
+//     sum += num;
+//   }
+//   return (sum);
+// }
+// const subtractUp = function(resultHandler, ...numbers) {
+//   let sum = 0;
+//   for (const num of numbers) {
+//     sum += num;
+//   }
+//   resultHandler(sum);
+// }
 
-const showResult = (result) => {
-  alert("The result after adding all numbers is: " + result);
+const showResult = (result, messageText) => {
+  alert(messageText + result);
 };
 
-console.log(sumUp(showResult, 1, 5, 'asdasd', 10, -3, 6, 10));
-console.log(sumUp(showResult,1, 5, 10, -3, 6, 10, 25, 88));
-console.log(subtractUp(1, 10, 15, 20));
+console.log(combine(showResult.bind(this, "The result agter adding all numbers is: "), "ADD", 1, 5, 'asdasd', 10, -3, 6, 10));
+console.log(combine(showResult.bind(this, "The result agter adding all numbers is: "), "ADD", 1, 5, 10, -3, 6, 10, 25, 88));
+console.log(combine(showResult.bind(this, "The result agter subtracting all numbers is: "), "SUBTRACT", 1, 10, 15, 20));
