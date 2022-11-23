@@ -125,7 +125,7 @@ const combine = (resultHandler, operation, ...numbers) => {
       sum -= validateNumber(num);
     }
   }
-  resultHandler(sum,);
+  resultHandler(sum);
 };
 
 // const subtractUp = function(resultHandler) {
