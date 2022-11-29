@@ -141,3 +141,19 @@ console.log(sortedPrices);
 const filteredArray = prices.filter(p => p > 6);
 
 console.log(filteredArray)
+
+// let sum = 0;
+
+// prices.forEach((price) => {
+//   sum += price
+// });
+
+// console.log(sum);
+
+// const sum = prices.reduce((prevValue, curValue, CurIndex, prices) => {
+// // prevalue 는 뒤에 설정한 0에서 시작
+//   return prevValue + curValue;
+// }, 0);
+const sum = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
+
+console.log(sum);
