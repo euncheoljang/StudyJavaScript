@@ -27,25 +27,34 @@
 //   }
 // }
 
-const hobbies = ["Sports", "Cooking"];
-hobbies.push("Reading");
-hobbies.unshift("Coding");
-console.log(hobbies);
-const popedValue = hobbies.pop();
-hobbies.shift();
-console.log(hobbies);
+// const hobbies = ["Sports", "Cooking"];
+// hobbies.push("Reading");
+// hobbies.unshift("Coding");
+// console.log(hobbies);
+// const popedValue = hobbies.pop();
+// hobbies.shift();
+// console.log(hobbies);
 
-hobbies[1] = "Coding";
-// hobbies[5] = "Reading";
-console.log(hobbies, hobbies[4])
+// hobbies[1] = "Coding";
+// // hobbies[5] = "Reading";
+// console.log(hobbies, hobbies[4])
 
-// 실제 array에서만 사용가능
-// hobbies.splice(0, 0, "Good Food");
-hobbies.splice(1, 0, "Good Food");
-console.log(hobbies)
+// // 실제 array에서만 사용가능
+// // hobbies.splice(0, 0, "Good Food");
+// hobbies.splice(1, 0, "Good Food");
+// console.log(hobbies)
 
-// hobbies.splice(0, 3);
-console.log(hobbies)
-// const removedElements = hobbies.splice(0);
-const removedElements = hobbies.splice(-1, 1);
-console.log(removedElements)
+// // hobbies.splice(0, 3);
+// console.log(hobbies)
+// // const removedElements = hobbies.splice(0);
+// const removedElements = hobbies.splice(-1, 1);
+// console.log(removedElements)
+
+const testResults = [1, 5.3, 1.5, 10.99, -5, 10,];
+// const storedResults = testResults.slice(0, 2);
+// const storedResults = testResults.slice(-3, -1);
+const storedResults = testResults.slice(2);
+
+testResults.push(5.91);
+
+console.log(storedResults, testResults)
