@@ -129,8 +129,15 @@ const sortedPrices = prices.sort((a, b) => {
 });
 console.log(sortedPrices);
 
-const filteredArray = prices.filter((price, index, prices) => {
-  return price > 6;
-});
+// const filteredArray = prices.filter((price, index, prices) => {
+//   return price > 6;
+// });
+
+// const filteredArray = prices.filter(price => {
+//   return price > 6;
+// });
+
+// const filteredArray = prices.filter(price => price > 6);
+const filteredArray = prices.filter(p => p > 6);
 
 console.log(filteredArray)
