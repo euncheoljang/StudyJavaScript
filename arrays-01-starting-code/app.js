@@ -154,37 +154,44 @@ console.log(filteredArray)
 // // prevalue 는 뒤에 설정한 0에서 시작
 //   return prevValue + curValue;
 // }, 0);
-const sum = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
+// const sum = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
 
-console.log(sum);
+// console.log(sum);
 
-const data = "new york;10.99;2000";
-const transformedData = data.split(";")
-transformedData[1] = +transformedData[1];
-console.log(transformedData);
+// const data = "new york;10.99;2000";
+// const transformedData = data.split(";")
+// transformedData[1] = +transformedData[1];
+// console.log(transformedData);
 
-const nameFragmetns = ["Max", "Schwarz"];
-const name1 = nameFragmetns.join(" ");
-console.log(name1);
+// const nameFragmetns = ["Max", "Schwarz"];
+// const name1 = nameFragmetns.join(" ");
+// console.log(name1);
 
-const copiedNameFragments = [...nameFragmetns];
-nameFragmetns.push("Mr")
-console.log(nameFragmetns, copiedNameFragments);
+// const copiedNameFragments = [...nameFragmetns];
+// nameFragmetns.push("Mr")
+// console.log(nameFragmetns, copiedNameFragments);
 
-console.log(Math.min(1, 5, -3));
-console.log(Math.min(...prices))
+// console.log(Math.min(1, 5, -3));
+// console.log(Math.min(...prices))
 
+// // const persons = [{name: "Max", age: 30}, {name: "Manuel", age: 31}];
+// // const copiedPersons = [...persons];
+
+// // persons.push({name: "Anna", age: 29});
+// // persons[0].age = 31;
+// // console.log(persons, copiedPersons)
+
+// // 아예 새로 복사하고 싶으면
 // const persons = [{name: "Max", age: 30}, {name: "Manuel", age: 31}];
-// const copiedPersons = [...persons];
+// const copiedPersons = persons.map(person => ({name: person.name, age: person.age}));
 
 // persons.push({name: "Anna", age: 29});
 // persons[0].age = 31;
 // console.log(persons, copiedPersons)
 
-// 아예 새로 복사하고 싶으면
-const persons = [{name: "Max", age: 30}, {name: "Manuel", age: 31}];
-const copiedPersons = persons.map(person => ({name: person.name, age: person.age}));
+const nameData = ["Max", "Schwarz", "Mr", 30];
+// const firstName = nameData[0];
+// const lastName = nameData[1];
 
-persons.push({name: "Anna", age: 29});
-persons[0].age = 31;
-console.log(persons, copiedPersons)
+const [firstName, lastName, ...otherInformation] = nameData;
+console.log(firstName, lastName, otherInformation);
