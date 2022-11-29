@@ -36,7 +36,16 @@ hobbies.shift();
 console.log(hobbies);
 
 hobbies[1] = "Coding";
-hobbies[5] = "Reading";
+// hobbies[5] = "Reading";
+console.log(hobbies, hobbies[4])
+
+// 실제 array에서만 사용가능
+// hobbies.splice(0, 0, "Good Food");
+hobbies.splice(1, 0, "Good Food");
 console.log(hobbies)
 
-
+// hobbies.splice(0, 3);
+console.log(hobbies)
+// const removedElements = hobbies.splice(0);
+const removedElements = hobbies.splice(-1, 1);
+console.log(removedElements)
