@@ -166,3 +166,25 @@ console.log(transformedData);
 const nameFragmetns = ["Max", "Schwarz"];
 const name1 = nameFragmetns.join(" ");
 console.log(name1);
+
+const copiedNameFragments = [...nameFragmetns];
+nameFragmetns.push("Mr")
+console.log(nameFragmetns, copiedNameFragments);
+
+console.log(Math.min(1, 5, -3));
+console.log(Math.min(...prices))
+
+// const persons = [{name: "Max", age: 30}, {name: "Manuel", age: 31}];
+// const copiedPersons = [...persons];
+
+// persons.push({name: "Anna", age: 29});
+// persons[0].age = 31;
+// console.log(persons, copiedPersons)
+
+// 아예 새로 복사하고 싶으면
+const persons = [{name: "Max", age: 30}, {name: "Manuel", age: 31}];
+const copiedPersons = persons.map(person => ({name: person.name, age: person.age}));
+
+persons.push({name: "Anna", age: 29});
+persons[0].age = 31;
+console.log(persons, copiedPersons)
