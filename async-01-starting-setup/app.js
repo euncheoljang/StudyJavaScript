@@ -3,10 +3,18 @@ const output = document.querySelector('p');
 
 function trackUserHandler() {
   navigator.geolocation.getCurrentPosition(posData => {
-    console.log(posData);
+    setTimeout(() => {
+      console.log(posData);
+    }, 2000);
   }, error => {
     console.log(error);
   });
+
+  // 콜백함수가 실행되기 위해서는 항상 메시지큐와 이벤트 루프를 통과해야한다. 
+  // 그래서 getting position... 이 먼저 실행
+  setTimeout(() => {
+    console.log("Timer done!");
+  }, 0);
   console.log("Getting position...");
 }
 
