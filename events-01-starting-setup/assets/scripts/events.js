@@ -117,6 +117,7 @@ const list = document.querySelector("ul");
 
 // ==============================================================================================
 
+// 함수 내부의 this는 타겟 그자체를 가리킨다.
 list.addEventListener("click", function(event) {
   // // currentTarget은 리스너가 적용된 요소를 참조함
   // console.log(event.currentTarget);
@@ -134,3 +135,9 @@ button.addEventListener("click", function(event) {
   console.log(event);
   console.log(this);
 });
+
+
+// ==============================================================================================
+
+
+
