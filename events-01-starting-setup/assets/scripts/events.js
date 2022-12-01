@@ -4,14 +4,14 @@ const buttons = document.querySelectorAll("button");
 
 // };
 
-const buttonClickHandler = event => {
-  // event.target.disabled = true;
-  console.log(event);
-};
+// const buttonClickHandler = event => {
+//   // event.target.disabled = true;
+//   console.log(event);
+// };
 
-const anotherButtonClickHandler = () => {
-  console.log("Thie was clicked!");
-};
+// const anotherButtonClickHandler = () => {
+//   console.log("Thie was clicked!");
+// };
 
 // // 오버라이드해서 어나더 핸들러만 실행됨
 // button.onclick = buttonClickHandler;
@@ -27,25 +27,31 @@ const anotherButtonClickHandler = () => {
 // buttons.forEach(btn => {
 //   btn.addEventListener("click", buttonClickHandler);
 // });
-buttons.forEach(btn => {
-  btn.addEventListener("mouseenter", buttonClickHandler);
-});
+// buttons.forEach(btn => {
+//   btn.addEventListener("mouseenter", buttonClickHandler);
+// });
 
-window.addEventListener("scroll", event => {
+// window.addEventListener("scroll", event => {
+//   console.log(event);
+// });
+
+// let curElementNumber = 0;
+
+// function scrollHandler() {
+//     const distanceToBottom = document.body.getBoundingClientRect().bottom;
+
+//     if (distanceToBottom < document.documentElement.clientHeight + 150) {
+//         const newDataElement = document.createElement('div');
+//         curElementNumber++;
+//         newDataElement.innerHTML = `<p>Element ${curElementNumber}</p>`;
+//         document.body.append(newDataElement);
+//     }
+// }
+
+// window.addEventListener('scroll', scrollHandler);
+
+const form = document.querySelector("form");
+form.addEventListener("submit", event => {
+  event.preventDefault();
   console.log(event);
 });
-
-let curElementNumber = 0;
-
-function scrollHandler() {
-    const distanceToBottom = document.body.getBoundingClientRect().bottom;
-
-    if (distanceToBottom < document.documentElement.clientHeight + 150) {
-        const newDataElement = document.createElement('div');
-        curElementNumber++;
-        newDataElement.innerHTML = `<p>Element ${curElementNumber}</p>`;
-        document.body.append(newDataElement);
-    }
-}
-
-window.addEventListener('scroll', scrollHandler);
