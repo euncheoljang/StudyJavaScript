@@ -40,11 +40,18 @@ const setTimer = (duration) => {
 // async 를 붙이면 함수가 자동으로 promise를 반환함
 // 함수 내부의 모든것을 큰 promise로 감쌈
 async function trackUserHandler() {
-  let positionData;
+  // let positionData;
+  let posData;
+  let timerData;
+
+  try {
+    posData = await getPosition();
+    timerData = await setTimer(2000);
+  } catch (error) {
+    console.log(error);
+  }
   // 프로미스가 해결되거나 실패하기를 기다림
   // 그 후 다음 줄이 실행
-  const posData = await getPosition();
-  const timerData = await setTimer(2000);
   console.log(timerData, posData);
     // .then((posData) => {
     //   positionData = posData;
