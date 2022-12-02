@@ -36,27 +36,34 @@ const setTimer = (duration) => {
 //       console.log(error);
 //     }
 //   );
-function trackUserHandler() {
+
+// async 를 붙이면 함수가 자동으로 promise를 반환함
+// 함수 내부의 모든것을 큰 promise로 감쌈
+async function trackUserHandler() {
   let positionData;
-  getPosition()
-    .then((posData) => {
-      positionData = posData;
-      return setTimer(2000);
-    })
-    .catch(err => {
-      console.log(err)
-      return "on we go..."
-    })
-    .then((data) => {
-      console.log(data, positionData);
-    })
+  // 프로미스가 해결되거나 실패하기를 기다림
+  // 그 후 다음 줄이 실행
+  const posData = await getPosition();
+  const timerData = await setTimer(2000);
+  console.log(timerData, posData);
+    // .then((posData) => {
+    //   positionData = posData;
+    //   return setTimer(2000);
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    //   return "on we go..."
+    // })
+    // .then((data) => {
+    //   console.log(data, positionData);
+    // })
 
   // 콜백함수가 실행되기 위해서는 항상 메시지큐와 이벤트 루프를 통과해야한다.
   // 그래서 getting position... 이 먼저 실행
-  setTimer(1000).then(() => {
-    console.log("Timer Done!");
-  });
-  console.log("Getting position...");
+  // setTimer(1000).then(() => {
+  //   console.log("Timer Done!");
+  // });
+  // console.log("Getting position...");
 }
 
 // trackUserHandler가 callback function임
