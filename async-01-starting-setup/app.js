@@ -40,7 +40,7 @@ const setTimer = (duration) => {
 // async 를 붙이면 함수가 자동으로 promise를 반환함
 // 함수 내부의 모든것을 큰 promise로 감쌈
 async function trackUserHandler() {
-  // let positionData;
+  let positionData;
   let posData;
   let timerData;
 
@@ -53,29 +53,42 @@ async function trackUserHandler() {
   // 프로미스가 해결되거나 실패하기를 기다림
   // 그 후 다음 줄이 실행
   console.log(timerData, posData);
-    // .then((posData) => {
-    //   positionData = posData;
-    //   return setTimer(2000);
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    //   return "on we go..."
-    // })
-    // .then((data) => {
-    //   console.log(data, positionData);
-    // })
+  // getPosition()
+  //   .then((posData) => {
+  //     positionData = posData;
+  //     return setTimer(2000);
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //     return "on we go..."
+  //   })
+  //   .then((data) => {
+  //     console.log(data, positionData);
+  //   })
 
   // 콜백함수가 실행되기 위해서는 항상 메시지큐와 이벤트 루프를 통과해야한다.
   // 그래서 getting position... 이 먼저 실행
-  // setTimer(1000).then(() => {
-  //   console.log("Timer Done!");
-  // });
-  // console.log("Getting position...");
+  setTimer(1000).then(() => {
+    console.log("Timer Done!");
+  });
+  console.log("Getting position...");
 }
 
 // trackUserHandler가 callback function임
 // 리스너는 브라우저가 관리
 button.addEventListener("click", trackUserHandler);
+
+Promise.race([getPosition(), setTimer(1000)]).then(data => {
+  console.log(data);
+});
+
+Promise.all([getPosition(), setTimer(1000)]).then(promiseData => {
+  console.log(promiseData);
+});
+
+Promise.allSettled([getPosition(), setTimer(1000)]).then(promiseData => {
+  console.log(promiseData);
+});
 
 // let result = 0
 // for (let i= 0;  i < 9999999999; i++) {
