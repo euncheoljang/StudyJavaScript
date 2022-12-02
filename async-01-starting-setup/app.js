@@ -1,6 +1,19 @@
 const button = document.querySelector("button");
 const output = document.querySelector("p");
 
+const getPosition = (opts) => {
+  const promise = new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (success) => {
+        resolve(success);
+      },
+      (error) => {},
+      opts
+    );
+  });
+  return promise;
+};
+
 const setTimer = (duration) => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -10,17 +23,27 @@ const setTimer = (duration) => {
   return promise;
 };
 
+// function trackUserHandler() {
+//   navigator.geolocation.getCurrentPosition(
+//     (posData) => {
+//       setTimer(2000).then((data) => {
+//         console.log(data, posData);
+//       });
+//     },
+//     (error) => {
+//       console.log(error);
+//     }
+//   );
 function trackUserHandler() {
-  navigator.geolocation.getCurrentPosition(
-    (posData) => {
-      setTimer(2000).then(data => {
-        console.log(data, posData)
-      });
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
+  let positionData;
+  getPosition()
+    .then((posData) => {
+      positionData = posData;
+      return setTimer();
+    })
+    .then((data) => {
+      console.log(data, positionData);
+    });
 
   // 콜백함수가 실행되기 위해서는 항상 메시지큐와 이벤트 루프를 통과해야한다.
   // 그래서 getting position... 이 먼저 실행
