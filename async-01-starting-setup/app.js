@@ -7,9 +7,11 @@ const getPosition = (opts) => {
       (success) => {
         resolve(success);
       },
-      (error) => {},
-      opts
-    );
+      (error) => {
+        reject(error);
+      }
+    ),
+      opts;
   });
   return promise;
 };
@@ -39,11 +41,15 @@ function trackUserHandler() {
   getPosition()
     .then((posData) => {
       positionData = posData;
-      return setTimer();
+      return setTimer(2000);
+    })
+    .catch(err => {
+      console.log(err)
+      return "on we go..."
     })
     .then((data) => {
       console.log(data, positionData);
-    });
+    })
 
   // 콜백함수가 실행되기 위해서는 항상 메시지큐와 이벤트 루프를 통과해야한다.
   // 그래서 getting position... 이 먼저 실행
