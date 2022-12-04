@@ -2,6 +2,7 @@ const listElement = document.querySelector(".posts");
 const postTemplate = document.getElementById("single-post");
 const form = document.querySelector("#new-post form");
 const fetchButton = document.querySelector("#available-posts");
+const postList = document.querySelector("ul");
 
 function sendHttpRequest(method, url, data) {
   const promise = new Promise((resolve, reject) => {
@@ -28,29 +29,33 @@ async function fetchPosts() {
     const posetEl = document.importNode(postTemplate.content, true);
     posetEl.querySelector("h2").textContent = post.title.toUpperCase();
     posetEl.querySelector("p").textContent = post.body;
+    posetEl.querySelector("li").id = post.id;
     listElement.append(posetEl);
   }
 }
 
 async function createPost(title, content) {
-    const userId = Math.random();
-    const post = {
-        titile: title,
-        body: content,
-        userId: userId
-    };
+  const userId = Math.random();
+  const post = {
+    titile: title,
+    body: content,
+    userId: userId,
+  };
 
-    sendHttpRequest(
-        "POST", 
-        "https://jsonplaceholder.typicode.com/posts",
-        post
-    )
+  sendHttpRequest("POST", "https://jsonplaceholder.typicode.com/posts", post);
 }
 
 fetchButton.addEventListener("click", fetchPosts);
-form.addEventListener("submit", event => {
-   event.preventDefault();
-   const enterdTitle = event.currentTarget.querySelector("#title").value;
-   const enterdContent = event.currentTarget.querySelector("#content").value;
-   createPost(enterdTitle, enterdContent);
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const enterdTitle = event.currentTarget.querySelector("#title").value;
+  const enterdContent = event.currentTarget.querySelector("#content").value;
+  createPost(enterdTitle, enterdContent);
+});
+
+postList.addEventListener("click", (event) => {
+  if (event.target.tagName === "BUTTON") {
+    const postId = event.target.closest("li").id;
+    sendHttpRequest("DELETE", `https://jsonplaceholder.typicode.com/posts/${postId}`);
+  }
 });
